@@ -1,109 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Odisha Tours & Travels</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="tours.css" />
-</head>
-
-
-
-<body>
-    <div class="language-switcher">
-  <select id="languageSelect" onchange="translateLanguage(this.value)">
-    <option value="en">🌐 English</option>
-    <option value="hi">🇮🇳 Hindi</option>
-    <option value="or">🌀 Odia</option>
-  </select>
-</div>
-
-  <header>
-   
-    <div class="logo-title">
-      <img src="logo.png" alt="Logo" class="logo"/>
-      <h1>Tours & Travels</h1>
-    </div>
-    <nav>
-      <a href="tours.html" class="active">Tours</a>
-      <a href="heritage.html">Heritage</a>
-      <a href="preserve.html">Preserve With Us</a>
-      <a href="games.html">Games</a>
-    </nav>
-  </header>
-  
-</div>
-
-
-  
-
-  <main>
-    <h2>Explore the Magical Wonders of Odisha</h2>
-    <p class="subtitle">Hover over the destinations to feel the soul of the land</p>
-
-    <div class="horizontal-scroll">
-      <!-- Card 1 -->
-      <div class="place-card" data-info="UNESCO World Heritage Site">
-        <img src="images/konark.jpg" alt="Konark Sun Temple">
-        <div class="overlay">
-          <span class="place-name">Konark Sun Temple</span>
-          <p>Where time worships the Sun...</p>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="place-card" data-info="Spiritual Capital of Odisha">
-        <img src="images/images.jpg" alt="Puri">
-        <div class="overlay">
-          <span class="place-name">Jagannath Puri</span>
-          <p>Feel the chariot of divinity roll...</p>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="place-card" data-info="Asia’s Largest Brackish Lagoon">
-        <img src="images/chilka.jpg" alt="Chilika Lake">
-        <div class="overlay">
-          <span class="place-name">Chilika Lake</span>
-          <p>Where flamingos dance on water mirrors...</p>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="place-card" data-info="Ancient Sacred Hill">
-        <img src="images/devgiri.jpg" alt="Devagiri Hills">
-        <div class="overlay">
-          <span class="place-name">Devagiri Hills</span>
-          <p>Whispers of sages echo in silence...</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 Odisha Tourism • Experience the Divine</p>
-  </footer>
-  <script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-
-  function translateLanguage(lang) {
-    const selectField = document.querySelector(".goog-te-combo");
-    if (selectField) {
-      selectField.value = lang;
-      selectField.dispatchEvent(new Event("change"));
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odisha Tourist Spots</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Flex layout for images + 3D model */
+    .info-content {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap; /* stacks on small screens */
     }
-  }
-</script>
 
-<!-- Hidden Google Translate Loader -->
-<div id="google_translate_element" style="display: none;"></div>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    .info-content .gallery {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-content .gallery img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #three-model-container {
+      flex: 1;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none; /* hidden by default */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main">
+    <div class="main-inner">
+      <div class="intro">
+        <h2>Famous Tourist Spots of Odisha</h2>
+        <p>Click on the tiles below to explore Odisha’s iconic destinations with pictures and descriptions.</p>
+      </div>
+
+      <div class="tiles">
+        <div class="tile" onclick="showInfo('konark')">
+          <img src="images/konark.jpg" alt="Konark Sun Temple">
+          Konark Sun Temple
+        </div>
+        <div class="tile" onclick="showInfo('jagannath')">
+          <img src="images/jagannath.jpg" alt="Jagannath Temple">
+          Jagannath Temple
+        </div>
+        <div class="tile" onclick="showInfo('devagiri')">
+          <img src="images/devagiri.jpg" alt="Devagiri Hills">
+          Devagiri Hills
+        </div>
+        <div class="tile" onclick="showInfo('chilika')">
+          <img src="images/chilika.jpg" alt="Chilika Lake">
+          Chilika Lake
+        </div>
+      </div>
+
+      <!-- Updated info-box -->
+      <div class="info-box" id="info-box">
+        <div class="info-content">
+          <div class="gallery" id="info-gallery"></div>
+          <div id="three-model-container"></div>
+        </div>
+        <h3 id="info-title"></h3>
+        <p id="info-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <script>
+    const infoBox = document.getElementById('info-box');
+    const infoGallery = document.getElementById('info-gallery');
+    const infoTitle = document.getElementById('info-title');
+    const infoText = document.getElementById('info-text');
+    const threeModelContainer = document.getElementById('three-model-container');
+
+    const infoData = {
+      konark: {
+        images: ['images/konark.jpg','images/konark1.jpg','images/konark2.jpg'],
+        title: '🛕 Konark Sun Temple',
+        text: `The Konark Sun Temple, built in the 13th century, is a UNESCO World Heritage Site known for its intricate stone carvings and chariot-shaped architecture. It represents the Sun God’s chariot and is famous for its artistic grandeur and spiritual significance.`,
+        model: 'konarksuntemple.glb'
+      },
+      jagannath: {
+        images: ['images/jagannath.jpg','images/jagannath1.jpg','images/jagannath2.jpg'],
+        title: '🛕 Jagannath Temple, Puri',
+        text: `The Jagannath Temple in Puri is one of the Char Dham pilgrimage sites of India. Dedicated to Lord Jagannath, it attracts millions of devotees, especially during the annual Rath Yatra festival. The temple is renowned for its architecture, rituals, and cultural significance.`,
+        model: 'model.glb'
+      },
+      devagiri: {
+        images: ['images/devagiri.jpg','images/devagiri1.jpg','images/devagiri2.jpg'],
+        title: '⛰️ Devagiri Hills',
+        text: `Devagiri Hills are scenic hillocks located in Odisha, known for trekking, nature walks, and panoramic views. The hills are dotted with ancient temples and offer a peaceful environment for nature lovers and adventure enthusiasts alike.`,
+        model: 'devagiri+temple+3d+model (2).glb'
+      },
+      chilika: {
+        images: ['images/chilika.jpg','images/chilika1.jpg','images/chilika2.jpg'],
+        title: '🌊 Chilika Lake',
+        text: `Chilika Lake is Asia’s largest brackish water lagoon and a hotspot for migratory birds. It is famous for dolphin sightings, boating, and rich biodiversity. The lake plays a vital role in local livelihoods and eco-tourism.`
+      }
+    };
+
+    let renderer, camera, scene, controls;
+
+    function init3D(modelPath) {
+      if (threeModelContainer.querySelector('canvas')) {
+        threeModelContainer.querySelector('canvas').remove();
+      }
+      
+      const canvas = document.createElement('canvas');
+      canvas.id = 'three-canvas';
+      threeModelContainer.appendChild(canvas);
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xf0f0f0);
+
+      camera = new THREE.PerspectiveCamera(75, threeModelContainer.clientWidth / threeModelContainer.clientHeight, 0.1, 1000);
+      camera.position.set(0, 1, 5);
+
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+      renderer.setSize(threeModelContainer.clientWidth, threeModelContainer.clientHeight);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 5, 5);
+      scene.add(directionalLight);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        modelPath,
+        (gltf) => {
+          gltf.scene.scale.set(10, 10, 10);
+          scene.add(gltf.scene);
+        },
+        undefined,
+        (error) => {
+          console.error(error);
+        }
+      );
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const width = threeModelContainer.clientWidth;
+        const height = threeModelContainer.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      });
+    }
+
+    function showInfo(type) {
+      const data = infoData[type];
+      
+      infoGallery.innerHTML = '';
+      data.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        infoGallery.appendChild(img);
+      });
+
+      if (data.model) {
+        threeModelContainer.style.display = 'block';
+        init3D(data.model);
+      } else {
+        threeModelContainer.style.display = 'none';
+      }
+
+      infoTitle.innerHTML = data.title;
+      infoText.innerHTML = data.text;
+      infoBox.style.display = 'block';
+      infoBox.scrollIntoView({behavior:'smooth'});
+    }
+  </script>
 
 </body>
 </html>
+
+
