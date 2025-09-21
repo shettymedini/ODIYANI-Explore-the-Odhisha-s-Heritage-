@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Odisha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="heritage.css">
+</head>
+<body>
+
+  <div id="main">
+    <div class="main-inner">
+      <div class="intro">
+        <h2>Heritage of Odisha</h2>
+        <p>Click on the tiles below to explore Odisha's art, dance, and cuisine in detail.</p>
+      </div>
+
+      <div class="tiles">
+        <div class="tile" onclick="showInfo('art')">
+          <img src="images2/pipili.jpg" alt="Pipili">
+          Art & Handicrafts
+        </div>
+        <div class="tile" onclick="showInfo('dance')">
+          <img src="images2/chhau.jpg" alt="Chhau">
+          Dance Forms
+        </div>
+        <div class="tile" onclick="showInfo('food')">
+          <img src="images2/rasagola.jpg" alt="Rasagola">
+          Cuisine
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="info-box" id="info-box">
+        <div class="gallery" id="info-gallery"></div>
+        <h3 id="info-title"></h3>
+        <p id="info-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const infoBox = document.getElementById('info-box');
+    const infoGallery = document.getElementById('info-gallery');
+    const infoTitle = document.getElementById('info-title');
+    const infoText = document.getElementById('info-text');
+
+    const infoData = {
+      art: {
+        images: ['images2/pipili.jpg','images2/pattachitra.jpg','images2/stone-carving.jpg'],
+        title: '🎨 Art & Handicrafts of Odisha',
+        text: `Odisha is famous for its exquisite arts and handicrafts. 
+        <b>Pipili Appliqué</b> is colorful stitched fabric art, often decorating Rath Yatra chariots and homes. 
+        <b>Pattachitra</b> is traditional scroll painting rooted in mythology and temple culture. 
+        Odisha is also renowned for stone carvings, silver filigree, and hand-woven textiles.`
+      },
+      dance: {
+        images: ['images2/chhau.jpg','images2/odissi.jpg','images2/gotipua.jpg'],
+        title: '💃 Dance Forms of Odisha',
+        text: `Odissi is one of the eight classical Indian dances, celebrated for grace and devotional storytelling. 
+        <b>Chhau</b> dance combines martial arts, masks, and folk storytelling, performed during festivals. 
+        <b>Gotipua</b> dance showcases young boys performing acrobatic Odissi-based movements in devotion to Lord Jagannath.`
+      },
+      food: {
+        images: ['images2/rasagola.jpg','images2/dalma.jpg','images2/pakhala.jpg'],
+        title: '🍲 Cuisine of Odisha',
+        text: `Odisha’s cuisine is rich, wholesome, and diverse. 
+        <b>Rasagola</b> is a soft syrupy sweet, celebrated as "Rasagola Dibasa". 
+        <b>Dalma</b> is a nutritious lentil and vegetable dish. 
+        <b>Pakhala</b> is fermented rice, typically eaten during summer festivals. 
+        Odisha also offers a variety of sweets and regional seafood delicacies.`
+      }
+    };
+
+    function showInfo(type) {
+      const data = infoData[type];
+
+      infoGallery.innerHTML = '';
+      data.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        infoGallery.appendChild(img);
+      });
+
+      infoTitle.innerHTML = data.title;
+      infoText.innerHTML = data.text;
+      infoBox.style.display = 'block';
+      infoBox.scrollIntoView({behavior:'smooth'});
+    }
+  </script>
+
+</body>
+</html>
