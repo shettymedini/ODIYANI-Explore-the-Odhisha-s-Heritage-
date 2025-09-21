@@ -5,22 +5,7 @@
   <title>Incredible India Heritage</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
-  <style>
-    /* Optional inline styles for language switcher */
-    .language-switcher {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      z-index: 100;
-    }
-
-    .language-switcher select {
-      padding: 5px 10px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+ 
 
     .tile a {
       text-decoration: none;
@@ -32,10 +17,6 @@
   </style>
 </head>
 <body>
-  <!-- Beautiful Google Translate Dropdown -->
-<div class="custom-language-switcher">
-  <div id="google_translate_element"></div>
-</div>
 
 
   
@@ -61,16 +42,16 @@
 
       <nav class="tiles">
         <div class="tile tile1">
-          <a href="http://127.0.0.1:5500/tours.html"><center>🛕Teerthapatha</center></a>
+          <a href="http://127.0.0.1:5500/tours.html"><center>🛕Tours and Travels</center></a>
         </div>
         <div class="tile tile2">
-          <a href="heritage.html"><center>🏛 Nrityanidhi</center></a>
+          <a href="heritage.html"><center>🏛 Heritage</center></a>
         </div>
         <div class="tile tile3">
-          <a href="http://127.0.0.1:5500/preserve.html"><center>🔶Sanskaresthu</center></a>
+          <a href="http://127.0.0.1:5500/preserve.html"><center>🔶Preserve with Us</center></a>
         </div>
         <div class="tile tile4">
-          <a href="heritage.html"><center>🎮DesiManoranjan</center></a>
+          <a href="heritage.html"><center>🎮Games</center></a>
         </div>
       </nav>
     </div>
@@ -80,31 +61,8 @@
   <footer id="site-footer">
     <p>© 2025 Incredible India • Celebrating Culture & Heritage</p>
   </footer>
-
-  <!-- JS for language switcher -->
-  <script>
-    function changeLanguage() {
-      const selectedLang = document.getElementById('lang-select').value;
-      // You can later implement actual localization logic here.
-      alert("Language switched to: " + selectedLang.toUpperCase());
-    }
-  </script>
-
-  <script src="script.js"></script>
-  <!-- Google Translate Script -->
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,hi,ta,bn,gu,or,te,ml,kn,mr,pa',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-</script>
-
-<!-- Load Google Translate API -->
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
 
 </body>
 </html>
+
