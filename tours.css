@@ -1,0 +1,262 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(to right, #edf7f6, #e8f0ff);
+  color: #2c2c2c;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #ffffffcc;
+  border-bottom: 3px solid #caa946;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+header h1 {
+  font-size: 1.6rem;
+  color: #3a2f1d;
+}
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+nav a.active, nav a:hover {
+  color: #caa946;
+}
+
+/* Banner */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  border-radius: 18px;
+  overflow: hidden;
+  height: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.caption {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display', serif;
+  z-index: 9999;
+}
+
+.language-switcher select {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #3a2f1d;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Hide the ugly Google Translate banner */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #e6f2f7; /* pastel blue */
+  padding: 40px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+}
+
+.places-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.place-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.place-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 600px) {
+  .places-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .place-card {
+    padding: 18px;
+    font-size: 16px;
+  }
+}
+
+body {
+  top: 0px !important;
+}
+
+/* Hide Google Translate popup */
+.goog-logo-link, 
+.goog-te-gadget span,
+#goog-gt-tt, 
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+
+/* Main Content */
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+main h2 {
+  font-size: 2.2rem;
+  color: #3b2f2f;
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Horizontal Scroll */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+.horizontal-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #caa946;
+  border-radius: 10px;
+}
+
+/* Place Cards */
+.place-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 250px;
+  height: 170px;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 2px solid #caa946;
+  background: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  scroll-snap-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.place-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+/* Hover Effects */
+.place-card:hover img {
+  transform: scale(1.07);
+  filter: brightness(1.2) saturate(1.2) drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+}
+
+/* Info Overlay */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+  width: 100%;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.place-card:hover .overlay {
+  opacity: 1;
+}
+.place-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #3a2f1d;
+}
+.overlay p {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #fffbe6;
+  border-top: 2px solid #d4af37;
+  color: #555;
+}

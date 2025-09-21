@@ -1,0 +1,127 @@
+/* Global */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background: #f0faff;
+  color: #2d1e1e;
+  overflow-x: hidden;
+}
+
+header {
+  background: #ffffffcc;
+  border-bottom: 3px solid #d4af37;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  margin-right: 15px;
+  border-radius: 50%;
+  border: 2px solid #d4af37;
+  background: #fff;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #2d1e1e;
+  font-weight: bold;
+}
+
+.lang-switcher select {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #fffaf0;
+  border: 1px solid #d4af37;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Banner */
+.temple-banner img {
+  width: 90%;
+  max-width: 1000px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Sections */
+main {
+  padding: 20px 40px;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.temple-details h2,
+.temple-audio h2 {
+  color: #d18d00;
+  margin-top: 30px;
+}
+
+/* Side Motifs */
+.lotus {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background-image: url('images/lotus.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.left-lotus {
+  top: 30%;
+  left: 10px;
+}
+
+.right-lotus {
+  top: 60%;
+  right: 10px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scroll Reveal */
+.scroll-slide, .scroll-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-slide.visible,
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #fff4e6;
+  color: #7b5e2e;
+  margin-top: 50px;
+}

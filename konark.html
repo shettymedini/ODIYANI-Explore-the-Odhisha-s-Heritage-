@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konark Sun Temple • Odisha Heritage</title>
+  <link rel="stylesheet" href="konark.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Side Motifs -->
+  <div class="lotus left-lotus"></div>
+  <div class="lotus right-lotus"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-title">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1>Konark Sun Temple</h1>
+    </div>
+    <nav>
+      <a href="tours.html">Tours & Travels</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="preserve.html">Preserve With Us</a>
+      <a href="games.html">Games</a>
+    </nav>
+    <div class="lang-switcher">
+      <select id="langSelect" onchange="changeLang()">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="or">ଓଡ଼ିଆ</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Main Banner -->
+  <section class="temple-banner scroll-fade">
+    <img src="images/konark2.jpg" alt="Konark Sun Temple" />
+  </section>
+
+  <!-- Content Section -->
+  <main>
+    <section class="temple-details scroll-slide">
+      <h2>History & Significance</h2>
+      <p id="history">
+        The Konark Sun Temple, built in the 13<sup>th</sup> century by King Narasimhadeva I, is a masterpiece of Odia architecture. Designed in the form of a colossal chariot for the Sun God Surya, it features twelve exquisitely carved stone wheels and is drawn by seven horses. The entire structure is a testimony to the brilliance of Indian artisans and engineers.
+      </p>
+
+      <h2>Location & Era</h2>
+      <p id="location">
+        Located near the Bay of Bengal in Konark, Odisha, the temple was constructed between 1243–1255 CE. It once stood at the shores, with sunlight directly entering the sanctum at dawn.
+      </p>
+
+      <h2>Myths & Legends</h2>
+      <p id="myths">
+        According to legend, Samba, the son of Lord Krishna, built the temple after being cured of leprosy by the blessings of Surya. Another poignant tale speaks of a 12-year-old boy, Dharmapada, who completed the unfinished temple’s crown stone and sacrificed himself to protect the 1200 artisans’ lives.
+      </p>
+    </section>
+
+    <section class="temple-audio scroll-slide">
+      <h2>🎧 Listen to the Story</h2>
+      <audio controls id="audioPlayer">
+        <source src="audio/konark_en.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Odisha Heritage • Crafted with Culture & Care</p>
+  </footer>
+
+  <script src="konark.js"></script>
+</body>
+</html>

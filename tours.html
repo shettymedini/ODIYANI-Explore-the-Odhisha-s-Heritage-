@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odisha Tours & Travels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="tours.css" />
+</head>
+
+
+
+<body>
+    <div class="language-switcher">
+  <select id="languageSelect" onchange="translateLanguage(this.value)">
+    <option value="en">🌐 English</option>
+    <option value="hi">🇮🇳 Hindi</option>
+    <option value="or">🌀 Odia</option>
+  </select>
+</div>
+
+  <header>
+   
+    <div class="logo-title">
+      <img src="logo.png" alt="Logo" class="logo"/>
+      <h1>Tours & Travels</h1>
+    </div>
+    <nav>
+      <a href="tours.html" class="active">Tours</a>
+      <a href="heritage.html">Heritage</a>
+      <a href="preserve.html">Preserve With Us</a>
+      <a href="games.html">Games</a>
+    </nav>
+  </header>
+  
+</div>
+
+
+  
+
+  <main>
+    <h2>Explore the Magical Wonders of Odisha</h2>
+    <p class="subtitle">Hover over the destinations to feel the soul of the land</p>
+
+    <div class="horizontal-scroll">
+      <!-- Card 1 -->
+      <div class="place-card" data-info="UNESCO World Heritage Site">
+        <img src="images/konark.jpg" alt="Konark Sun Temple">
+        <div class="overlay">
+          <span class="place-name">Konark Sun Temple</span>
+          <p>Where time worships the Sun...</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="place-card" data-info="Spiritual Capital of Odisha">
+        <img src="images/images.jpg" alt="Puri">
+        <div class="overlay">
+          <span class="place-name">Jagannath Puri</span>
+          <p>Feel the chariot of divinity roll...</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="place-card" data-info="Asia’s Largest Brackish Lagoon">
+        <img src="images/chilka.jpg" alt="Chilika Lake">
+        <div class="overlay">
+          <span class="place-name">Chilika Lake</span>
+          <p>Where flamingos dance on water mirrors...</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="place-card" data-info="Ancient Sacred Hill">
+        <img src="images/devgiri.jpg" alt="Devagiri Hills">
+        <div class="overlay">
+          <span class="place-name">Devagiri Hills</span>
+          <p>Whispers of sages echo in silence...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Odisha Tourism • Experience the Divine</p>
+  </footer>
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  function translateLanguage(lang) {
+    const selectField = document.querySelector(".goog-te-combo");
+    if (selectField) {
+      selectField.value = lang;
+      selectField.dispatchEvent(new Event("change"));
+    }
+  }
+</script>
+
+<!-- Hidden Google Translate Loader -->
+<div id="google_translate_element" style="display: none;"></div>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
