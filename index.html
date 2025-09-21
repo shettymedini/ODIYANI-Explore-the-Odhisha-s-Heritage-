@@ -5,15 +5,46 @@
   <title>Incredible India Heritage</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <style>
+    /* Optional inline styles for language switcher */
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 100;
+    }
+
+    .language-switcher select {
+      padding: 5px 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .tile a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
+  <!-- Beautiful Google Translate Dropdown -->
+<div class="custom-language-switcher">
+  <div id="google_translate_element"></div>
+</div>
+
+
+  
 
   <!-- Splash / Intro -->
   <div id="splash">
     <div class="splash-content">
-      <!-- Centered Logo and Title -->
       <div class="center-title-block">
-        <img class="logo-circle" src="./logo.png" alt="Logo">
+        <img class="logo-circle" src="logo.png" alt="Logo">
         <h1 class="royal-title">Incredible India Heritage</h1>
         <p class="reveal-text delay1">A Journey Through Heritage & Colors</p>
       </div>
@@ -24,15 +55,23 @@
   <div id="main">
     <div class="main-inner">
       <section class="intro">
-        <h2 class="reveal-text">Welcome to Incredible India</h2>
-        <p class="reveal-text delay1"></p>
+        <h2 class="reveal-text">Welcome to Odiyani</h2>
+        <p class="reveal-text delay1">Explore the beauty of Odhisha's diverse culture and heritage.</p>
       </section>
 
       <nav class="tiles">
-        <div class="tile tile1" onclick="location.href='tours.html'" style="cursor:pointer;">🛕 Tours & Travels</div>
-        <div class="tile tile2" onclick="location.href='heritage.html'" style="cursor:pointer;">🏛 Heritage</div>
-        <div class="tile tile3" onclick="location.href='culture.html'" style="cursor:pointer;">🎨 Culture</div>
-        <div class="tile tile4" onclick="location.href='games.html'" style="cursor:pointer;">🎮 Games</div>
+        <div class="tile tile1">
+          <a href="http://127.0.0.1:5500/tours.html"><center>🛕Teerthapatha</center></a>
+        </div>
+        <div class="tile tile2">
+          <a href="heritage.html"><center>🏛 Nrityanidhi</center></a>
+        </div>
+        <div class="tile tile3">
+          <a href="http://127.0.0.1:5500/preserve.html"><center>🔶Sanskaresthu</center></a>
+        </div>
+        <div class="tile tile4">
+          <a href="heritage.html"><center>🎮DesiManoranjan</center></a>
+        </div>
       </nav>
     </div>
   </div>
@@ -42,6 +81,30 @@
     <p>© 2025 Incredible India • Celebrating Culture & Heritage</p>
   </footer>
 
+  <!-- JS for language switcher -->
+  <script>
+    function changeLanguage() {
+      const selectedLang = document.getElementById('lang-select').value;
+      // You can later implement actual localization logic here.
+      alert("Language switched to: " + selectedLang.toUpperCase());
+    }
+  </script>
+
   <script src="script.js"></script>
+  <!-- Google Translate Script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,ta,bn,gu,or,te,ml,kn,mr,pa',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<!-- Load Google Translate API -->
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
