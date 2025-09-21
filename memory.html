@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Puri Jagannath Memory Game</title>
+  <link rel="stylesheet" href="allgames.css">
+</head>
+<body>
+  <h1>Puri Jagannath Memory Game</h1>
+  <div id="game-board"></div>
+  <h2 id="score">Moves: 0</h2>
+  <div id="back-btn"></div>
+
+  <script>
+    const icons = ["🕉","🌸","🪔","🍛","🎉","🏰","🛕","🚩"];
+    let cards = [...icons, ...icons];
+    let firstCard, secondCard;
+    let lockBoard = false;
+    let moves = 0;
+
+    cards.sort(() => 0.5 - Math.random());
+    const board = document.getElementById("game-board");
+
+    cards.forEach(icon => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">❓</div>
+          <div class="card-back">${icon}</div>
+        </div>
+      `;
+      board.appendChild(card);
+      card.addEventListener("click", () => flipCard(card));
+    });
+
+    function flipCard(card) {
+      if (lockBoard || card === firstCard) return;
+      card.classList.add("flip");
+
+      if (!firstCard) {
+        firstCard = card;
+        return;
+      }
+
+      secondCard = card;
+      moves++;
+      document.getElementById("score").innerText = "Moves: " + moves;
+      checkMatch();
+    }
+
+    function checkMatch() {
+      let isMatch = firstCard.querySelector(".card-back").innerText ===
+                    secondCard.querySelector(".card-back").innerText;
+      isMatch ? disableCards() : unflipCards();
+    }
+
+    function disableCards() {
+      resetBoard();
+    }
+
+    function unflipCards() {
+      lockBoard = true;
+      setTimeout(() => {
+        firstCard.classList.remove("flip");
+        secondCard.classList.remove("flip");
+        resetBoard();
+      }, 1000);
+    }
+
+    function resetBoard() {
+      [firstCard, secondCard] = [null, null];
+      lockBoard = false;
+
+      let flipped = document.querySelectorAll(".flip").length;
+      if (flipped === cards.length) {
+        document.getElementById("score").innerText =
+          `🎉 You won in ${moves} moves!`;
+        document.getElementById("back-btn").innerHTML =
+          `<button onclick="location.href='games.html'">⬅ Back to Games</button>`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Puri Jagannath Quiz</title>
+  <link rel="stylesheet" href="allgames.css">
+</head>
+<body>
+  <h1>Puri Jagannath Temple Quiz</h1>
+  <div class="quiz-box">
+    <h2 id="question">Loading...</h2>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Next</button>
+    <h3 id="score">Score: 0</h3>
+    <div id="back-btn"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      { question: "Where is Jagannath Temple located?",
+        options: ["Puri, Odisha", "Madurai, Tamil Nadu", "Varanasi, UP", "Dwarka, Gujarat"],
+        answer: "Puri, Odisha" },
+      { question: "What is the famous festival of Jagannath Temple?",
+        options: ["Holi", "Diwali", "Rath Yatra", "Durga Puja"],
+        answer: "Rath Yatra" },
+      { question: "What is the name of the temple’s sacred food?",
+        options: ["Mahaprasad", "Pongal", "Chhappan Bhog", "Kheer"],
+        answer: "Mahaprasad" },
+      { question: "Who are worshipped in Jagannath Temple?",
+        options: ["Jagannath, Balabhadra, Subhadra", "Shiva, Parvati, Ganesha", "Rama, Sita, Lakshman", "Krishna, Radha, Rukmini"],
+        answer: "Jagannath, Balabhadra, Subhadra" }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      document.getElementById("question").innerText = quizData[current].question;
+      document.getElementById("options").innerHTML = quizData[current].options.map(opt =>
+        `<div class="option" onclick="checkAnswer(this, '${opt}')">${opt}</div>`
+      ).join("");
+      answered = false;
+    }
+
+    function checkAnswer(element, selected) {
+      if (answered) return;
+      answered = true;
+      if (selected === quizData[current].answer) {
+        element.classList.add("correct");
+        score++;
+      } else {
+        element.classList.add("wrong");
+        [...document.getElementsByClassName("option")].forEach(opt => {
+          if (opt.innerText === quizData[current].answer) {
+            opt.classList.add("correct");
+          }
+        });
+      }
+      document.getElementById("score").innerText = "Score: " + score;
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < quizData.length) {
+        loadQuestion();
+      } else {
+        document.getElementById("question").innerText = "🎉 Quiz Completed!";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("back-btn").innerHTML =
+          `<button onclick="location.href='games.html'">⬅ Back to Games</button>`;
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

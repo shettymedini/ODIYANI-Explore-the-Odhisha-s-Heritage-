@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Odia Phrases</title>
+  <link rel="stylesheet" href="allgames.css">
+</head>
+<body>
+  <h1>Learn Simple Odia Phrases</h1>
+  <div class="game-box">
+    <h2 id="question">Loading...</h2>
+    <div id="options"></div>
+    <button onclick="nextPhrase()">Next</button>
+    <div id="back-btn"></div>
+  </div>
+
+  <script>
+    const phrases = [
+      {eng: "Hello", odia: "ନମସ୍କାର (Namaskar)"},
+      {eng: "How are you?", odia: "କେମିତି ଅଛ? (Kemiti achha?)"},
+      {eng: "I am fine", odia: "ମୁଁ ଭଲ ଅଛି (Mu bhala achhi)"},
+      {eng: "Thank you", odia: "ଧନ୍ୟବାଦ (Dhanyabad)"},
+      {eng: "Yes", odia: "ହଁ (Han)"},
+      {eng: "No", odia: "ନା (Na)"},
+      {eng: "What is your name?", odia: "ତୁମର ନାମ କଣ? (Tumara nama kana?)"},
+      {eng: "Where is the temple?", odia: "ମନ୍ଦିର କେଉଁଠି ଅଛି? (Mandira keunthi achhi?)"}
+    ];
+
+    let current = 0;
+
+    function loadPhrase() {
+      document.getElementById("question").innerText = "👉 " + phrases[current].eng;
+      let shuffled = [...phrases].sort(() => 0.5 - Math.random()).slice(0,3);
+      if (!shuffled.includes(phrases[current])) shuffled[0] = phrases[current];
+
+      document.getElementById("options").innerHTML = shuffled.map(opt =>
+        `<div class="phrase" onclick="checkAnswer(this, '${opt.odia}')">${opt.odia}</div>`
+      ).join("");
+    }
+
+    function checkAnswer(element, selected) {
+      let correct = phrases[current].odia;
+      if (selected === correct) {
+        element.classList.add("correct");
+      } else {
+        element.classList.add("wrong");
+        [...document.getElementsByClassName("phrase")].forEach(opt => {
+          if (opt.innerText === correct) opt.classList.add("correct");
+        });
+      }
+    }
+
+    function nextPhrase() {
+      current++;
+      if (current < phrases.length) {
+        loadPhrase();
+      } else {
+        document.getElementById("question").innerText = "🎉 You finished learning!";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("back-btn").innerHTML =
+          `<button onclick="location.href='games.html'">⬅ Back to Games</button>`;
+      }
+    }
+
+    loadPhrase();
+  </script>
+</body>
+</html>
